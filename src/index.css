@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Primary ─── */
+  --color-primary: #6366F1;
+  --color-primary-hover: #4F46E5;
+  --color-primary-light: #A5B4FC;
+  --color-primary-surface: rgba(99, 102, 241, 0.08);
+  --color-primary-glow: rgba(99, 102, 241, 0.25);
+
+  /* ─── Secondary ─── */
+  --color-secondary: #06B6D4;
+  --color-secondary-light: #67E8F9;
+  --color-secondary-surface: rgba(6, 182, 212, 0.08);
+
+  /* ─── Accent ─── */
+  --color-accent: #F59E0B;
+  --color-accent-light: #FCD34D;
+  --color-accent-surface: rgba(245, 158, 11, 0.08);
+
+  /* ─── Success ─── */
+  --color-success: #22C55E;
+  --color-success-light: #86EFAC;
+  --color-success-surface: rgba(34, 197, 94, 0.08);
+
+  /* ─── Rose ─── */
+  --color-rose: #F43F5E;
+  --color-rose-light: #FDA4AF;
+  --color-rose-surface: rgba(244, 63, 94, 0.08);
+
+  /* ─── Neutrals ─── */
+  --color-dark: #09090B;
+  --color-dark-2: #111113;
+  --color-dark-3: #18181B;
+  --color-dark-4: #27272A;
+  --color-ink: #FAFAFA;
+  --color-ink-secondary: #A1A1AA;
+  --color-ink-muted: #52525B;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-light: rgba(255, 255, 255, 0.04);
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+
+  /* ─── Radius ─── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* ─── Shadows ─── */
+  --shadow-glow-sm: 0 0 20px rgba(99, 102, 241, 0.15);
+  --shadow-glow-md: 0 0 40px rgba(99, 102, 241, 0.2);
+  --shadow-glow-lg: 0 0 80px rgba(99, 102, 241, 0.25);
+  --shadow-glow-secondary: 0 0 40px rgba(6, 182, 212, 0.2);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.05), 0 8px 40px rgba(0,0,0,0.3);
+  --shadow-card-hover: 0 0 0 1px rgba(255,255,255,0.1), 0 16px 60px rgba(0,0,0,0.4);
+
+  /* ─── Font ─── */
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-dark);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .container-main {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-main { padding-inline: 2rem; }
+  }
+
+  /* گرادیان متن */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #6366F1, #A5B4FC, #67E8F9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #F59E0B, #F43F5E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* شیشه‌ای */
+  .glass {
+    background: var(--color-glass);
+    backdrop-filter: blur(16px) saturate(1.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+    border: 1px solid var(--color-glass-border);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px) saturate(2);
+    -webkit-backdrop-filter: blur(24px) saturate(2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Glow border */
+  .glow-border {
+    position: relative;
+  }
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(99,102,241,0.3), transparent, rgba(6,182,212,0.3));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+
+  /* انیمیشن‌ها */
+  .animate-in {
+    animation: animIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-delay-1 { animation-delay: 0.1s; }
+  .animate-delay-2 { animation-delay: 0.2s; }
+  .animate-delay-3 { animation-delay: 0.3s; }
+  .animate-delay-4 { animation-delay: 0.4s; }
+
+  @keyframes animIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* شناور */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(99,102,241,0.15); }
+    50% { box-shadow: 0 0 40px rgba(99,102,241,0.35); }
+  }
+
+  /* Marquee */
+  .marquee {
+    animation: marquee 35s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Noise texture overlay */
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
