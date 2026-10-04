@@ -1,0 +1,14 @@
+export { default as Header } from "./Header";
+export { default as Hero } from "./Hero";
+export { default as LogoCloud } from "./LogoCloud";
+export { default as Features } from "./Features";
+export { default as ShopTemplates } from "./ShopTemplates";
+export { default as InstagramShops } from "./InstagramShops";
+export { default as PricingHint } from "./PricingHint";
+export { default as GrowthStats } from "./GrowthStats";
+export { default as SmartFeatures } from "./SmartFeatures";
+export { default as BusinessStories } from "./BusinessStories";
+export { default as Pricing } from "./Pricing";
+export { default as FAQ } from "./FAQ";
+export { default as CtaBanner } from "./CtaBanner";
+export { default as Footer } from "./Footer";
