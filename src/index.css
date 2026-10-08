@@ -121,6 +121,41 @@
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: 1.25rem;
+
+    /* ─── Rolling Card Stack v2 ─── */
+.roll-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.7s cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+.roll-collapse.is-open {
+  grid-template-rows: 1fr;
+}
+.roll-collapse-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.rolling-card-back {
+  transform-origin: top center;
+  transform: rotateX(-55deg) scale(0.96);
+  opacity: 0;
+  transition:
+    transform 0.7s cubic-bezier(0.34, 1.3, 0.5, 1),
+    opacity 0.45s ease 0.1s;
+}
+.is-open .rolling-card-back {
+  transform: rotateX(0deg) scale(1);
+  opacity: 1;
+}
+
+.rolling-card-front {
+  transition: transform 0.7s cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+.is-open .rolling-card-front {
+  transform: translateY(-8px);
+}
+
   }
   @media (min-width: 768px) { .container-main { padding-inline: 2rem; } }
 

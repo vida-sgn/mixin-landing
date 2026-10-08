@@ -1,5 +1,5 @@
 import { IconCheck, IconArrowLeft } from "../assets/icons";
-import StoreMockup from "./hero/StoreMockup";
+import HeroCardStack from "../components/hero/HeroCardStack";
 
 const Hero = () => {
   return (
@@ -334,7 +334,7 @@ const Hero = () => {
             lg:-ml-6
           ">
 
-            <StoreMockup />
+            <HeroCardStack />
           </div>
 
         </div>
