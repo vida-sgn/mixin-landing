@@ -178,7 +178,7 @@ const Hero = () => {
               <br />
 
               <span className="text-gradient">
-                فروشت را چند برابر کن
+                فروش خود را چند برابر کن
               </span>
             </h1>
 
@@ -335,66 +335,6 @@ const Hero = () => {
           ">
 
             <StoreMockup />
-
-            {/* Floating notification */}
-            <div className="
-              absolute
-              -top-6
-              -left-2
-              sm:-top-10
-              sm:-left-12
-              bg-white
-              rounded-[2rem]
-              pl-7
-              pr-3.5
-              py-3.5
-              shadow-[0_24px_48px_-12px_rgba(0,0,0,0.12)]
-              border
-              border-slate-100
-              animate-float
-              animate-in
-              delay-3
-              z-20
-            ">
-              <div className="
-                flex
-                items-center
-                gap-4
-              ">
-                {/* Icon Container (Right side in RTL) */}
-                <div className="
-                  w-14
-                  h-14
-                  rounded-full
-                  bg-[#F0F4F8]
-                  flex
-                  items-center
-                  justify-center
-                ">
-                  <span className="text-2xl drop-shadow-sm">🎉</span>
-                </div>
-
-                {/* Text Details (Left side in RTL) */}
-                <div className="flex flex-col">
-                  <div className="
-                    text-[16px]
-                    font-black
-                    text-slate-800
-                  ">
-                    سفارش جدید!
-                  </div>
-                  <div className="
-                    text-[13px]
-                    font-bold
-                    text-slate-400
-                    mt-0.5
-                  ">
-                    ۸۹۰,۰۰۰ تومان
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
 
         </div>

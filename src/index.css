@@ -108,6 +108,10 @@
     background: var(--color-primary);
     color: white;
   }
+    h1, h2, h3 {
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+  }
 }
 
 
