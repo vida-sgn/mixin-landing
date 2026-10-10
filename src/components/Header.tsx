@@ -13,11 +13,30 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // اسکرول: مقداردهی اولیه + listener غیرفعال‌شده با passive
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", fn);
+    fn(); // اگر صفحه وسط‌اسکرول لود شده باشه، حالت درست رو ست می‌کنه
+    window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  // بستن منو با Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // قفل اسکرول body وقتی منوی موبایل بازه
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-500
@@ -69,7 +88,10 @@ const Header = () => {
           </a>
         </div>
 
-        <button onClick={() => setOpen(!open)}
+        <button
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-label={open ? "بستن منو" : "باز کردن منو"}
           className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl
                      text-ink-secondary hover:bg-primary-surface hover:text-primary transition-all duration-300 cursor-pointer">
           {open ? <IconX /> : <IconMenu />}

@@ -1,22 +1,18 @@
 import React from "react";
 
+const stats = [
+  { label: "فروش کل", value: "۱۸.۴ میلیون", color: "text-primary" },
+  { label: "سفارش", value: "۱٬۲۴۰", color: "text-ink" },
+  { label: "بازدید", value: "۴۲ هزار", color: "text-secondary" },
+];
+
+// هفت میله برای هفت روز
+const bars = [35, 55, 40, 70, 52, 85, 65];
+const days = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
+
 export default function AnalyticsCard() {
-  const bars = [35, 55, 40, 70, 52, 85, 65, 92];
-
   return (
-    <div
-  className="
-    rolling-card-back
-    relative
-    rounded-[28px]
-    bg-white
-    border border-slate-100
-    shadow-hero-mockup
-    p-6
-    mb-2
-  "
->
-
+    <div className="relative p-6 w-full h-full bg-white">
       {/* هدر */}
       <div className="flex items-center justify-between mb-5">
         <div>
@@ -34,22 +30,18 @@ export default function AnalyticsCard() {
             text-[11px] font-bold
           "
         >
-          ↖ ۲۴٪ رشد
+          ↑ ۳۴٪ رشد
         </span>
       </div>
 
       {/* اعداد اصلی */}
       <div className="grid grid-cols-3 gap-3 mb-5">
-        {[
-          { label: "فروش کل", value: "۱۸.۴M", color: "text-primary" },
-          { label: "سفارش", value: "۱٬۲۴۰", color: "text-ink" },
-          { label: "بازدید", value: "۴۲K", color: "text-secondary" },
-        ].map((item) => (
+        {stats.map((item) => (
           <div
             key={item.label}
             className="rounded-2xl bg-surface p-3.5 text-center"
           >
-            <div className={`text-[18px] font-black ${item.color}`}>
+            <div className={`text-[16px] font-black ${item.color}`}>
               {item.value}
             </div>
             <div className="text-[10px] text-ink-muted mt-0.5">
@@ -59,24 +51,23 @@ export default function AnalyticsCard() {
         ))}
       </div>
 
-      {/* نمودار میله‌ای */}
+      {/* نمودار میله‌ای (باگ Flexbox برطرف شد) */}
       <div className="flex items-end justify-between gap-2 h-[90px]">
         {bars.map((h, i) => (
-          <div key={i} className="flex-1 flex flex-col items-center gap-1.5">
-            <div
-              className="
-                w-full rounded-t-md
-                bg-gradient-to-t
-                from-primary/25 to-primary
-              "
-              style={{ height: `${h}%` }}
-            />
-          </div>
+          <div
+            key={i}
+            className="
+              flex-1 rounded-t-md
+              bg-gradient-to-t
+              from-primary/25 to-primary
+            "
+            style={{ height: `${h}%` }}
+          />
         ))}
       </div>
 
       <div className="mt-2 flex items-center justify-between text-[9px] text-ink-muted/70">
-        {["ش", "ی", "د", "س", "چ", "پ", "ج", "ش"].map((d, i) => (
+        {days.map((d, i) => (
           <span key={i} className="flex-1 text-center">{d}</span>
         ))}
       </div>
