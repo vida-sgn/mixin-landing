@@ -47,7 +47,7 @@ const Features = () => {
           <span className="inline-flex items-center gap-2 px-4 py-2 text-[11px] font-bold
                            text-primary bg-gradient-to-l from-primary-surface to-secondary-surface 
                            rounded-full mb-4 tracking-wider uppercase shadow-sm">
-            امکانات
+            امکانات 
           </span>
           <h2 className="text-3xl sm:text-[2.5rem] font-black text-ink leading-snug">
             مدیریت ساده و

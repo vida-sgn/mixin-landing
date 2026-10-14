@@ -3,7 +3,7 @@ import HeroCardStack from "../components/hero/HeroCardStack";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-12 lg:pb-24">
+    <section className="relative overflow-hidden pt-22 pb-16 lg:pt-26 lg:pb-24">
 
       {/* ───────── Background ───────── */}
 
